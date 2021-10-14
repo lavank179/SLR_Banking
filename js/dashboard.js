@@ -1,0 +1,285 @@
+console.log(1);
+
+var url_string = window.location;
+var url = new URL(url_string);
+var userid = url.searchParams.get("user-id");
+var accountno = url.searchParams.get("account-no");
+
+console.log(userid);
+console.log(accountno);
+
+let profile_name = document.querySelector("#profilename");
+profile_name.innerText = userid;
+
+$("#refresh").on("click", function () {
+  let coll = document.querySelector("#request-table");
+  coll.innerHTML = "";
+  getRequestForm();
+});
+
+$("#request_form").on("click", function () {
+  req_form();
+});
+
+$("#live_chat_connect").on("click", function () {
+  connect_live_chat();
+});
+
+$("#change_user_details").on("click", function () {
+  change_user_details();
+});
+
+$("#get_user_details").on("click", function () {
+  let coll = document.querySelector("#user-details-table");
+  coll.innerHTML = "";
+  get_user_details();
+});
+
+
+
+function req_form() {
+  let form = document.getElementById("form1").value;
+  console.log(form);
+
+  let amount = document.getElementById("transac_amount").value;
+  console.log(amount);
+
+  let ref_name = document.getElementById("refname").value;
+  console.log(ref_name);
+
+  $.ajax({
+    url: "https://b135-106-208-18-231.ngrok.io/video/form_request.php",
+    method: "POST",
+    data: {
+      insert_form_request: 10,
+      userid: userid,
+      account_no: accountno,
+      type: form,
+      amount: amount,
+      reference_name: ref_name,
+    },
+    success: function (data) {
+      if (data == 2) {
+        alert("You form request is submitted successfully!");
+        getRequestForm();
+      } else {
+        alert("Some error in submitting your request");
+      }
+    },
+  });
+}
+
+function getRequestForm() {
+  $.ajax({
+    url: "https://b135-106-208-18-231.ngrok.io/video/form_request.php",
+    method: "POST",
+    data: {
+      request_form_details: 10,
+      userID: userid,
+      account_no: accountno,
+    },
+    success: function (data) {
+      data = JSON.parse(data);
+      let dt = data;
+
+      if(data == 0){
+        let coll = document.querySelector("#request-table");
+        coll.append(" No active request forms present for this account! Please submit some forms to display here.");
+      }
+      else if (dt[0].account_no == accountno) {
+        for (let i = 0; i < dt.length; i++) {
+          printRequestDetails(
+            dt[i].account_no,
+            dt[i].form_id,
+            dt[i].form_name,
+            dt[i].request_type,
+            dt[i].transaction_amount,
+            dt[i].service_request_status
+          );
+        }
+      } else {
+        alert("Error in fetching details from Database!");
+      }
+
+    },
+  });
+}
+
+function printRequestDetails(v1, v2, v3, v4, v5, v6) {
+  console.log(v1, v2, v3, v4, v5, v6);
+  let coll = document.querySelector("#request-table");
+
+  let tr = document.createElement("tr");
+  let td1 = document.createElement("td");
+  let td2 = document.createElement("td");
+  let td3 = document.createElement("td");
+  let td4 = document.createElement("td");
+  let td5 = document.createElement("td");
+  let td6 = document.createElement("td");
+  // td2 = td3 = td4 = td5 = td6 = td1;
+
+  td1.innerHTML = v1;
+  td2.innerHTML = v2;
+  td3.innerHTML = v3;
+  td4.innerHTML = v4;
+  td5.innerHTML = v5;
+  td6.innerHTML = v6;
+
+  console.log(td1, td2, td3, td4);
+
+  tr.append(td1);
+  tr.append(td2);
+  tr.append(td3);
+  tr.append(td4);
+  tr.append(td5);
+  tr.append(td6);
+
+  coll.appendChild(tr);
+}
+
+function connect_live_chat() {
+  let call_type = document.querySelector("#form_video_type").value;
+  let name = document.querySelector("#user_name").value;
+
+  console.log(call_type);
+  console.log(name);
+
+  alert("Call Sent - Do you want to connect!");
+  // window.location.href = `../video-chat/index.html?user-id=${userid}&account-no=${accountno}&user-name=${name}&call-type=${call_type}`;
+  window.open(`../video-chat/index.html?user-id=${userid}&account-no=${accountno}&user-name=${name}&call-type=${call_type}`,'_blank');
+}
+
+function logout() {
+
+  let isExecuted = confirm("Are you sure want to logout?");
+  if(isExecuted){
+    window.location.href = "../";
+  } else {
+    console.log("Not logged out! Staying here.");
+  }
+}
+
+function change_user_details(){
+  let user_change = document.getElementById("username_change").value;
+  console.log(user_change);
+
+  let ph_change = document.getElementById("phone_change").value;
+  console.log(ph_change);
+
+  let add_change = document.getElementById("address_change").value;
+  console.log(add_change);
+
+  let refname = document.getElementById("refe_name").value;
+  console.log(refname);
+
+  $.ajax({
+    url: "https://b135-106-208-18-231.ngrok.io/video/update_user_details.php",
+    method: "POST",
+    data: {
+      insert_user_details: 10,
+      name: user_change,
+      account_no: accountno,
+      phone: ph_change,
+      address: add_change,
+      ref_name: refname
+    },
+    success: function (data) {
+      console.log(data);
+      if (data == 2) {
+        alert("Your change user details request is submitted successfully!");
+      } else {
+        alert("Some error in submitting your request");
+      }
+    },
+  });
+}
+
+function get_user_details(){
+  $.ajax({
+    url: "https://b135-106-208-18-231.ngrok.io/video/update_user_details.php",
+    method: "POST",
+    data: {
+      get_user_details: 10,
+      accountno: accountno
+    },
+    success: function (data) {
+      data = JSON.parse(data);
+      let dt = data;
+      console.log(data);
+
+      if(data == 0){
+        let coll = document.querySelector("#user-details-table");
+        coll.append(" No active request forms present for this account! Please submit some forms to display here.");
+      }
+      else if (dt[0].account_no == accountno) {
+        for (let i = 0; i < dt.length; i++) {
+          printUserDetails(
+            dt[i].account_no,
+            dt[i].req_id,
+            dt[i].ref_name,
+            dt[i].phone,
+            dt[i].address,
+            dt[i].status
+          );
+        }
+      } else {
+        alert("Error in fetching details from Database!");
+      }
+
+    },
+  });
+}
+
+
+function printUserDetails(v1, v2, v3, v4, v5, v6) {
+  console.log(v1, v2, v3, v4, v5, v6);
+  let coll = document.querySelector("#user-details-table");
+
+  let tr = document.createElement("tr");
+  let td1 = document.createElement("td");
+  let td2 = document.createElement("td");
+  let td3 = document.createElement("td");
+  let td4 = document.createElement("td");
+  let td5 = document.createElement("td");
+  let td6 = document.createElement("td");
+  // td2 = td3 = td4 = td5 = td6 = td1;
+
+  td1.innerHTML = v1;
+  td2.innerHTML = v2;
+  td3.innerHTML = v3;
+  td4.innerHTML = v4;
+  td5.innerHTML = v5;
+  td6.innerHTML = v6;
+
+  console.log(td1, td2, td3, td4);
+
+  tr.append(td1);
+  tr.append(td2);
+  tr.append(td3);
+  tr.append(td4);
+  tr.append(td5);
+  tr.append(td6);
+
+  coll.appendChild(tr);
+}
+
+req_form1();
+
+function req_form1() {
+
+  $.ajax({
+    url: "http://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=10811c73&app_key=ea72e3f1c3ac073e5d5844a63d30945a&results_per_page=20&what=javascript%20developer&content-type=application/json",
+    method: "GET",
+    // data: {
+    //   insert_form_request: 10,
+    //   userid: userid,
+    //   account_no: accountno,
+    //   type: form,
+    //   amount: amount,
+    //   reference_name: ref_name,
+    // },
+    success: function (data) {
+      console.log(data);
+    },
+  });
+}
