@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Dashboard </title>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="./assets/MDBootstrap-pro/MDB-Pro_4.11.0/css/mdb.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <!-- <link rel="stylesheet" href="./css/login.css"> -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia|Roboto">
+
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" />
+  </head>
+
+  <style type="text/css">
+    body {
+      background-color: #b8dbe0;
+      margin: 0;
+      padding: 0;
+      font-family: "Roboto";
+    }
+
+    .login-card {
+      max-width: 450px;
+      background-color: transparent;
+      float: none;
+      margin: auto;
+      box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
+      margin-top: 8%;
+      margin-bottom: 5%;
+    }
+
+    /* @media (max-width: 700px) {
+          div {
+              margin: 0 auto;
+              width: auto;
+          }
+      } */
+  </style>
+
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img
+          src="https://thumbs.dreamstime.com/b/bank-icon-sign-facade-building-symbol-circle-isolated-white-background-flat-style-vector-illustration-145525569.jpg"
+          width="40"
+          height="40"
+          alt=""
+        />
+        SLR Banking
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Hi, <span id="profilename"></span></a
+            >
+          </li>
+          <li class="nav-item">
+                <button class="btn btn-outline-success" onclick="logout();"> Logout </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <br><br><br>
+
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <ul class="nav nav-pills" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#withdraw_deposit" role="tab" aria-controls="home" aria-selected="true"> Withdraw/Deposit & VideoChat </a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#user_cheques" role="tab" aria-controls="profile" aria-selected="false"> User details / Cheques </a>
+      </li>
+    </ul>
+
+
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    
+    <div class="tab-content">
+
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+      <div class="tab-pane active" id="withdraw_deposit" role="tabpanel" aria-labelledby="home-tab">
+        <br><br><br><br><br>
+    <div class="row" id="main-panel">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-header">
+                <h3>Select Form</h3>
+              </div>
+              <br />
+              <div class="forms px-3 pb-3" align="center">
+                <form>
+                  <div class="form-outline mb-4" align="left">
+                    <select name="" id="form1">
+                      <option value="choose">-- CHOOSE FORM TYPE --</option>
+                      <option value="Deposit">Deposit</option>
+                      <option value="Withdraw">Withdraw</option>
+                    </select>
+                    <div id="er1"></div>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input
+                      type="text"
+                      id="transac_amount"
+                      class="form-control"
+                      name="money"
+                      placeholder="Transaction Amount"
+                    />
+                    <div id="er2"></div>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input
+                      type="text"
+                      id="refname"
+                      class="form-control"
+                      name="name"
+                      placeholder="Reference Name"
+                    />
+                    <div id="er3"></div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="btn btn-success"
+                    onclick="event.preventDefault();"
+                    id="request_form"
+                  >
+                    SUBMIT
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-8">
+            <div class="card text-center hoverable">
+              <div class="card-header"><h3>Live Video Chat</h3></div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-4"></div>
+                  <div class="col-sm-4">
+                    <form>
+                      <div class="form-outline mb-4">
+                        <select name="" id="form_video_type">
+                          <option value="choose">
+                            ------ CALL REQUEST TYPE -----
+                          </option>
+                          <option value="Request Service">
+                            Request Service
+                          </option>
+                          <option value="Verification Service">
+                            Verification Service
+                          </option>
+                          <option value="Online Banking">Online Banking</option>
+                          <option value="Other Service">Other Service</option>
+                        </select>
+                        <div id="er1"></div>
+                      </div>
+                      <div class="form-outline mb-4">
+                        <input
+                          type="text"
+                          id="user_name"
+                          class="form-control"
+                          name="name"
+                          placeholder="User Id or Name"
+                        />
+                        <div id="er2"></div>
+                      </div>
+
+                      <button
+                        type="submit"
+                        class="btn btn-success"
+                        onclick="event.preventDefault();"
+                        id="live_chat_connect"
+                      >
+                        CONNECT ME
+                      </button>
+                    </form>
+                  </div>
+                  <div class="col-sm-4"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br /><br />
+
+        <div id="request-details-list">
+          <div class="card text-center hoverable">
+            <div class="card-header">
+              Request Form Details &nbsp;&nbsp;&nbsp;&nbsp;
+              <button
+                type="refresh"
+                class="btn btn-primary"
+                onclick="event.preventDefault();"
+                id="refresh"
+              >
+                Refresh
+              </button>
+            </div>
+
+            <div class="card-body">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Account Number</th>
+                    <th scope="col">Form ID</th>
+                    <th scope="col">Form Name</th>
+                    <th scope="col">Request Type</th>
+                    <th scope="col">Transaction Amount</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="request-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
+      </div>
+
+
+          <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+      <div class="tab-pane" id="user_cheques" role="tabpanel" aria-labelledby="profile-tab">
+        <br><br><br><br><br>
+    <div class="row" id="main-panel">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-header">
+                <h3> Change User Details </h3>
+              </div>
+              <br />
+              <div class="forms px-3 pb-3" align="center">
+                <form>
+                  <div class="form-outline mb-4" align="left">
+                    <div id="er1"></div>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input
+                      type="text"
+                      id="username_change"
+                      class="form-control"
+                      name="name"
+                      placeholder="User Name"
+                    />
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input
+                      type="text"
+                      id="phone_change"
+                      class="form-control"
+                      name="phone"
+                      placeholder="Phone Number"
+                    />
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input
+                      type="text"
+                      id="address_change"
+                      class="form-control"
+                      name="address"
+                      placeholder="Address"
+                    />
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input
+                      type="text"
+                      id="refe_name"
+                      class="form-control"
+                      name="name"
+                      placeholder="Reference Name"
+                    />
+                  </div>
+
+
+                  <button
+                    type="submit"
+                    class="btn btn-success"
+                    onclick="event.preventDefault();"
+                    id="change_user_details"
+                  >
+                    Submit Request
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-8">
+            <div class="card text-center hoverable">
+              <div class="card-header"><h3> Pass the Cheque </h3></div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-4"></div>
+                  <div class="col-sm-4">
+                    <form>
+                      <div class="form-outline mb-4">
+                        <input
+                          type="number"
+                          id="payee_account"
+                          class="form-control"
+                          name="number"
+                          placeholder="Payee Account Number"
+                        />
+                      </div>
+                      <div class="form-outline mb-4">
+                        <input
+                          type="text"
+                          id="cheque_no"
+                          class="form-control"
+                          name="cheque_no"
+                          placeholder="Cheque Number"
+                        />
+                      </div>
+                      <div class="form-outline mb-4">
+                        <input
+                          type="date"
+                          id="cheque_date"
+                          class="form-control"
+                          name="date"
+                          placeholder="Cheque Date"
+                        />
+                      </div>
+                      <div class="form-outline mb-4">
+                        <input
+                          type="text"
+                          id="cheque_amount"
+                          class="form-control"
+                          name="amount"
+                          placeholder="Cheque Amount"
+                        />
+                      </div>
+                      <div class="form-outline mb-4">
+                        <input
+                          type="name"
+                          id="payee_name"
+                          class="form-control"
+                          name="name"
+                          placeholder="Payee Name"
+                        />
+                      </div>
+
+                      <button
+                        type="submit"
+                        class="btn btn-success"
+                        onclick="event.preventDefault();"
+                        id="update_cheque"
+                      >
+                        Update Cheque
+                      </button>
+                    </form>
+                  </div>
+                  <div class="col-sm-4"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br /><br />
+
+        <div id="request-details-list">
+          <div class="card text-center hoverable">
+            <div class="card-header">
+              User Update Details &nbsp;&nbsp;&nbsp;&nbsp;
+              <button
+                type="refresh"
+                class="btn btn-primary"
+                onclick="event.preventDefault();"
+                id="get_user_details"
+              >
+                Refresh
+              </button>
+            </div>
+
+            <div class="card-body">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Account Number</th>
+                    <th scope="col">Request ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="user-details-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
+
+      </div>
+    </div>
+
+
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+    ></script>
+
+    <script src="./assets/MDBootstrap-pro/MDB-Pro_4.11.0/js/mdb.min.js"></script>
+
+    <script type="text/javascript" src="./js/dashboard.js"></script>
+  </body>
+</html>
