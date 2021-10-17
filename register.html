@@ -1,109 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SLR Bank - Register Page</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Sign Up </title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/MDBootstrap-pro/MDB-Pro_4.11.0/css/mdb.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="./css/login.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto"
+    />
 
-    <link rel="shortcut icon" href="./assets/images/favicon.ico" />
-</head>
+    <link rel="stylesheet" href="./css/login.css" />
 
-<body>
+    <style type="text/css">
+      body {
+        background-color: #b8dbe0;
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto";
+      }
+    </style>
+  </head>
+
+  <body>
     <div class="container-fluid bg-login">
-        <div class="container">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-9 col-md-12 login-card">
             <div class="row">
-                <div class="col-lg-9 col-md-12 login-card">
-                    <div class="row">
-                        <div class="col-md-5 detail-part">
-                            <h1> SLR Bank Welcomes You </h1>
-                            <p> Please register for Banking </p>
-                        </div>
-                        <div class="col-md-7 logn-part reg">
-                            <div class="row">
-                                <div class="col-lg-10 col-md-12 mx-auto">
-                                    <div class="logo-cover text-center">
-                                        <img src="https://thumbs.dreamstime.com/b/bank-icon-sign-facade-building-symbol-circle-isolated-white-background-flat-style-vector-illustration-145525569.jpg" alt="marvel iot" width="150px" height="150px" />
-
-                                    </div>
-                                    <form>
-                                        <div class="form-outline mb-4">
-                                            <input type="text" id="username" class="form-control" name="Username" placeholder="UserName" />
-                                            <div id="er3"></div>
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                            <input type="email" id="email" class="form-control" name="Email" placeholder="UserId" />
-                                            <div id="er1"></div>
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                            <input type="text" id="account" class="form-control" name="account" placeholder="Account Number" />
-                                            <div id="er8"></div>
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                            <input type="password" id="password" class="form-control" name="Password" placeholder="Password" />
-                                            <div id="er2"></div>
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                            <input type="password" id="cpassword" class="form-control" name="cPassword" placeholder="Confirm Password" />
-                                            <div id="er4"></div>
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                            <input type="text" id="phone" class="form-control" name="phonenumber" placeholder="Phone Number" />
-                                            <div id="er5"></div>
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                        <select name="" id="gender">
-                                            <option value="Male">--Choose Gender--</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                            <option value="Others">Other</option>
-                                        </select>
-                                            <div id="er6"></div>
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                        <textarea id="address" name="Address" placeholder="Address" rows="4" cols="50"></textarea>
-                                            <div id="er7"></div>
-                                        </div>
-
-                                        <button id="LoginSub" class="btn btn-primary btn-block" onclick="event.preventDefault();">Sign Up</button>
-
-                                        <br>
-                                        <div class="text-center"><a href="./index.html"> Already have an account? Login In here </a></div>
-                                    </form>
-                                </div>
-                            </div>
-
-
-
-                        </div>
+              <div class="col-md-5 detail-part">
+                <h1>SLR Bank Welcomes You</h1>
+                <p>Please register for Banking</p>
+              </div>
+              <div class="col-md-7 logn-part reg">
+                <div class="row">
+                  <div class="col-lg-10 col-md-12 mx-auto">
+                    <div class="logo-cover text-center">
+                      <img
+                        src="https://thumbs.dreamstime.com/b/bank-icon-sign-facade-building-symbol-circle-isolated-white-background-flat-style-vector-illustration-145525569.jpg"
+                        alt="marvel iot"
+                        width="150px"
+                        height="150px"
+                      />
                     </div>
+                    <form>
+                      <div class="form-outline mb-4">
+                        <input
+                          type="text"
+                          id="username"
+                          class="form-control"
+                          name="Username"
+                          placeholder="UserName"
+                        />
+                        <div id="er3"></div>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input
+                          type="email"
+                          id="email"
+                          class="form-control"
+                          name="Email"
+                          placeholder="UserId"
+                        />
+                        <div id="er1"></div>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input
+                          type="text"
+                          id="account"
+                          class="form-control"
+                          name="account"
+                          placeholder="Account Number"
+                        />
+                        <div id="er8"></div>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input
+                          type="password"
+                          id="password"
+                          class="form-control"
+                          name="Password"
+                          placeholder="Password"
+                        />
+                        <div id="er2"></div>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input
+                          type="password"
+                          id="cpassword"
+                          class="form-control"
+                          name="cPassword"
+                          placeholder="Confirm Password"
+                        />
+                        <div id="er4"></div>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input
+                          type="text"
+                          id="phone"
+                          class="form-control"
+                          name="phonenumber"
+                          placeholder="Phone Number"
+                        />
+                        <div id="er5"></div>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <select name="" id="gender">
+                          <option value="Male">--Choose Gender--</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Others">Other</option>
+                        </select>
+                        <div id="er6"></div>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <textarea
+                          id="address"
+                          name="Address"
+                          placeholder="Address"
+                          rows="4"
+                          cols="50"
+                        ></textarea>
+                        <div id="er7"></div>
+                      </div>
+
+                      <button
+                        id="LoginSub"
+                        class="btn btn-primary btn-block"
+                        onclick="event.preventDefault();"
+                      >
+                        Sign Up
+                      </button>
+
+                      <br />
+                      <div class="text-center">
+                        <a href="./index.html">
+                          Already have an account? Login In here
+                        </a>
+                      </div>
+                    </form>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-    <script src="./assets/MDBootstrap-pro/MDB-Pro_4.11.0/js/mdb.min.js"></script>
-    <script type="text/javascript" src="./js/log.js"></script>
-
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+    ></script>
 
     <script type="text/javascript" src="./js/signup.js"></script>
-</body>
-
+  </body>
 </html>
