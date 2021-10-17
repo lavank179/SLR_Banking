@@ -52,13 +52,10 @@ function EDsubbtn() {
 
 function sendlogin() {
   let email = document.getElementById("email").value;
-  console.log(email);
 
   let pass = document.getElementById("password").value;
-  console.log(pass);
 
   var admin = $("#myadmin:checked").val();
-  console.log(admin);
 
   let dat = {
     login: 10,
@@ -73,10 +70,6 @@ function sendlogin() {
     success: function (data) {
       data = JSON.parse(data);
       let dt = data;
-      console.log(dt);
-      // console.log(dt[0].userID);
-
-      // if (dt[0].userID == email) {
       if (dt == 1) {
         alert(" User not found!");
       } else if (dt == 2) {

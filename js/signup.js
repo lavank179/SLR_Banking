@@ -92,40 +92,21 @@ function EDsubbtn() {
   }
 }
 
-  $('#LoginSub').on('click', function(){
-    sendRegister();
-  });
+$('#LoginSub').on('click', function () {
+  sendRegister();
+});
 
-function sendRegister(){
+function sendRegister() {
 
   let user = document.getElementById("username").value;
-  console.log(user);
-
   let email = document.getElementById("email").value;
-  console.log(email);
-  
   let pass = document.getElementById("password").value;
-  console.log(pass);
-
-  let cpass = document.getElementById("cpassword").value;
-  console.log(cpass);
-
-  // let gen = document.getElementById("gender").value;
-  // console.log(gen);
-
   let contact = document.getElementById("phone").value;
-  console.log(contact);
-
-
   let gen = $('#gender').val();
-  console.log(gen);
-  
-  let add = document.getElementById("address").value;
-  console.log(add);
 
-  let acc  = document.getElementById("account").value;
+  let add = document.getElementById("address").value;
+  let acc = document.getElementById("account").value;
   acc = parseInt(acc);
-  console.log(acc);
 
 
   $.ajax({
@@ -142,13 +123,12 @@ function sendRegister(){
       gender: gen,
     },
     success: function (data) {
-      console.log(data);
-      if(data == 2){
+      if (data == 2) {
         alert("New User registered successfully! Please Login to continue.");
         window.location.href = `../`;
-      } else if(data == 3){
+      } else if (data == 3) {
         alert("Error in DB Server! Please try again");
-      } else if(data == 1){
+      } else if (data == 1) {
         alert("User already exists! Please try with new details.");
       } else {
         alert("Some error has occured! please try again");
