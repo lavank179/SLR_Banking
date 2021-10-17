@@ -66,11 +66,13 @@ body {
   box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
   margin-top: 8%;
   margin-bottom: 5%;
+  border-radius: 0.5%;
 }
 .detail-part {
   background-image: url(../assets/login-images/login-balloon.jpg);
   padding: 30px;
   background-size: 100%;
+  font-family: "Lato";
 }
 .detail-part h1 {
   color:black;
@@ -79,6 +81,13 @@ body {
   color:black;
   margin-top: 30px;
 }
+
+.detail-part #dele{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .logn-part {
   padding: 30px;
 }
