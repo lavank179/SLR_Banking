@@ -1,12 +1,10 @@
-console.log(1);
+var postURL = "";
 
 var url_string = window.location;
 var url = new URL(url_string);
 var userid = url.searchParams.get("admin-id");
 var accountno = url.searchParams.get("account-no");
 
-console.log(userid);
-console.log(accountno);
 
 $("#request-form-table").on("click", function () {
   let coll = document.querySelector("#request-table");
@@ -24,18 +22,14 @@ $("#request_form").on("click", function () {
   req_form();
 });
 
+
 function req_form() {
   let form = document.getElementById("form1").value;
-  console.log(form);
-
   let amount = document.getElementById("transac_amount").value;
-  console.log(amount);
-
   let ref_name = document.getElementById("refname").value;
-  console.log(ref_name);
 
   $.ajax({
-    url: "https://b135-106-208-18-231.ngrok.io/video/form_request.php",
+    url: postURL,
     method: "POST",
     data: {
       insert_form_request: 10,
@@ -58,7 +52,7 @@ function req_form() {
 
 function getRequestForm() {
   $.ajax({
-    url: "https://b135-106-208-18-231.ngrok.io/video/form_request.php",
+    url: postURL,
     method: "POST",
     data: {
       request_form_details: 10,
@@ -88,14 +82,7 @@ function getRequestForm() {
 }
 
 function deleteTable(v1, v2, v3, v4, v5, v6) {
-  // let col = document.querySelectorAll("#request-table tr");
-  // // console.log(col);
-  // // for (var i = 1; i <= col.length; i++) {
-  // //   console.log(col[i]);
-  // //   col[i].remove();
-  // // }
   printRequestDetails(v1, v2, v3, v4, v5, v6);
-
 }
 
 function printRequestDetails(v1, v2, v3, v4, v5, v6) {
@@ -110,7 +97,6 @@ function printRequestDetails(v1, v2, v3, v4, v5, v6) {
   let td6 = document.createElement("td");
   let td7 = document.createElement("td");
   let td8 = document.createElement("td");
-  // td2 = td3 = td4 = td5 = td6 = td1;
 
   td1.innerHTML = v1;
   td2.innerHTML = v2;
@@ -140,13 +126,10 @@ function printRequestDetails(v1, v2, v3, v4, v5, v6) {
 
 
 function changeStatus(statusb) {
-
-  console.log(statusb);
-
   let st = $('#' + statusb).val();
-  console.log(st);
+
   $.ajax({
-    url: "https://b135-106-208-18-231.ngrok.io/video/admin_approval.php",
+    url: postURL,
     method: "POST",
     data: {
       approval: 1,
@@ -157,7 +140,6 @@ function changeStatus(statusb) {
     success: function (data) {
       data = JSON.parse(data);
       let dt = data;
-      console.log(dt);
 
       if (dt == 3) {
         alert(" Request status changed successfully by you(admin)! \n ID: " + statusb + " -- status: " + st);
@@ -187,28 +169,22 @@ function connect_live_chat() {
   let call_type = document.querySelector("#form_video_type").value;
   let name = document.querySelector("#user_name").value;
 
-  console.log(call_type);
-  console.log(name);
-
   alert("Call Sent - Do you want to connect!");
-  // window.location.href = `../video-chat/index.html?user-id=${userid}&account-no=${accountno}&user-name=${name}&call-type=${call_type}`;
-  window.open(`../video-chat/index.html?user-id=${userid}&account-no=${accountno}&user-name=${name}&call-type=${call_type}`,'_blank');
+  window.open(`../video-chat/index.html?user-id=${userid}&account-no=${accountno}&user-name=${name}&call-type=${call_type}`, '_blank');
 }
 
 function logout() {
-
   let isExecuted = confirm("Are you sure want to logout?");
-  if(isExecuted){
+  if (isExecuted) {
     window.location.href = "../";
   } else {
     console.log("Not logged out! Staying here.");
   }
 }
 
-
 function getuserdetails() {
   $.ajax({
-    url: "https://b135-106-208-18-231.ngrok.io/video/update_user_details.php",
+    url: postURL,
     method: "POST",
     data: {
       get_user_details: 10,
@@ -248,7 +224,6 @@ function printuserdetails(v1, v2, v3, v4, v5, v6) {
   let td6 = document.createElement("td");
   let td7 = document.createElement("td");
   let td8 = document.createElement("td");
-  // td2 = td3 = td4 = td5 = td6 = td1;
 
   td1.innerHTML = v1;
   td2.innerHTML = v2;
@@ -277,13 +252,9 @@ function printuserdetails(v1, v2, v3, v4, v5, v6) {
 }
 
 function changeUserStatus(statusb) {
-
-  console.log(statusb);
-
   let st = $('#' + statusb).val();
-  console.log(st);
   $.ajax({
-    url: "https://b135-106-208-18-231.ngrok.io/video/update_user_details.php",
+    url: postURL,
     method: "POST",
     data: {
       update_user_details: 1,
@@ -293,7 +264,6 @@ function changeUserStatus(statusb) {
     success: function (data) {
       data = JSON.parse(data);
       let dt = data;
-      console.log(dt);
 
       if (dt == 2) {
         alert("User details status changed successfully by you(admin)! \n ID: " + statusb + " -- status: " + st);
@@ -306,9 +276,9 @@ function changeUserStatus(statusb) {
         alert(" Error in updating status in DB! ");
       } else if (dt == 3) {
         alert(" Some error in getting previous index id! ");
-      } else if(dt == 4) {
+      } else if (dt == 4) {
         alert(" Rejecting status update failed");
-      }  else if(dt == 5) {
+      } else if (dt == 5) {
         alert(" Updated Rejected status Successfully in DB! ");
         let coll = document.querySelector("#user-table");
         coll.innerHTML = "";
