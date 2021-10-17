@@ -1,5 +1,3 @@
-var postURL = "";
-
 var url_string = window.location;
 var url = new URL(url_string);
 var userid = url.searchParams.get("user-id");
@@ -32,13 +30,15 @@ $("#get_user_details").on("click", function () {
   get_user_details();
 });
 
+
+
 function req_form() {
   let form = document.getElementById("form1").value;
   let amount = document.getElementById("transac_amount").value;
   let ref_name = document.getElementById("refname").value;
 
   $.ajax({
-    url: postURL,
+    url: "https://b135-106-208-18-231.ngrok.io/video/form_request.php",
     method: "POST",
     data: {
       insert_form_request: 10,
@@ -61,7 +61,7 @@ function req_form() {
 
 function getRequestForm() {
   $.ajax({
-    url: postURL,
+    url: "https://b135-106-208-18-231.ngrok.io/video/form_request.php",
     method: "POST",
     data: {
       request_form_details: 10,
@@ -114,6 +114,8 @@ function printRequestDetails(v1, v2, v3, v4, v5, v6) {
   td5.innerHTML = v5;
   td6.innerHTML = v6;
 
+  console.log(td1, td2, td3, td4);
+
   tr.append(td1);
   tr.append(td2);
   tr.append(td3);
@@ -147,7 +149,7 @@ function change_user_details() {
   let refname = document.getElementById("refe_name").value;
 
   $.ajax({
-    url: postURL,
+    url: "https://b135-106-208-18-231.ngrok.io/video/update_user_details.php",
     method: "POST",
     data: {
       insert_user_details: 10,
@@ -170,7 +172,7 @@ function change_user_details() {
 
 function get_user_details() {
   $.ajax({
-    url: postURL,
+    url: "https://b135-106-208-18-231.ngrok.io/video/update_user_details.php",
     method: "POST",
     data: {
       get_user_details: 10,
@@ -203,6 +205,7 @@ function get_user_details() {
   });
 }
 
+
 function printUserDetails(v1, v2, v3, v4, v5, v6) {
   let coll = document.querySelector("#user-details-table");
 
@@ -220,6 +223,8 @@ function printUserDetails(v1, v2, v3, v4, v5, v6) {
   td4.innerHTML = v4;
   td5.innerHTML = v5;
   td6.innerHTML = v6;
+
+  console.log(td1, td2, td3, td4);
 
   tr.append(td1);
   tr.append(td2);

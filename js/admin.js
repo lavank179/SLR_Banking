@@ -1,5 +1,3 @@
-var postURL = "";
-
 var url_string = window.location;
 var url = new URL(url_string);
 var userid = url.searchParams.get("admin-id");
@@ -29,7 +27,7 @@ function req_form() {
   let ref_name = document.getElementById("refname").value;
 
   $.ajax({
-    url: postURL,
+    url: "https://b135-106-208-18-231.ngrok.io/video/form_request.php",
     method: "POST",
     data: {
       insert_form_request: 10,
@@ -52,7 +50,7 @@ function req_form() {
 
 function getRequestForm() {
   $.ajax({
-    url: postURL,
+    url: "https://b135-106-208-18-231.ngrok.io/video/form_request.php",
     method: "POST",
     data: {
       request_form_details: 10,
@@ -129,7 +127,7 @@ function changeStatus(statusb) {
   let st = $('#' + statusb).val();
 
   $.ajax({
-    url: postURL,
+    url: "https://b135-106-208-18-231.ngrok.io/video/admin_approval.php",
     method: "POST",
     data: {
       approval: 1,
@@ -170,12 +168,12 @@ function connect_live_chat() {
   let name = document.querySelector("#user_name").value;
 
   alert("Call Sent - Do you want to connect!");
-  window.open(`../video-chat/index.html?user-id=${userid}&account-no=${accountno}&user-name=${name}&call-type=${call_type}`, '_blank');
+  window.open(`../video-chat/index.html?user-id=${userid}&account-no=${accountno}&user-name=${name}&call-type=${call_type}`,'_blank');
 }
 
 function logout() {
   let isExecuted = confirm("Are you sure want to logout?");
-  if (isExecuted) {
+  if(isExecuted){
     window.location.href = "../";
   } else {
     console.log("Not logged out! Staying here.");
@@ -184,7 +182,7 @@ function logout() {
 
 function getuserdetails() {
   $.ajax({
-    url: postURL,
+    url: "https://b135-106-208-18-231.ngrok.io/video/update_user_details.php",
     method: "POST",
     data: {
       get_user_details: 10,
@@ -254,7 +252,7 @@ function printuserdetails(v1, v2, v3, v4, v5, v6) {
 function changeUserStatus(statusb) {
   let st = $('#' + statusb).val();
   $.ajax({
-    url: postURL,
+    url: "https://b135-106-208-18-231.ngrok.io/video/update_user_details.php",
     method: "POST",
     data: {
       update_user_details: 1,
@@ -276,9 +274,9 @@ function changeUserStatus(statusb) {
         alert(" Error in updating status in DB! ");
       } else if (dt == 3) {
         alert(" Some error in getting previous index id! ");
-      } else if (dt == 4) {
+      } else if(dt == 4) {
         alert(" Rejecting status update failed");
-      } else if (dt == 5) {
+      }  else if(dt == 5) {
         alert(" Updated Rejected status Successfully in DB! ");
         let coll = document.querySelector("#user-table");
         coll.innerHTML = "";
@@ -286,7 +284,6 @@ function changeUserStatus(statusb) {
       } else {
         alert(" Some error happend! please try again. \n Message: " + dt);
       }
-
     },
   });
 
