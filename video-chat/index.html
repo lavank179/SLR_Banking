@@ -1,6 +1,6 @@
 <html lang="en">
   <head>
-    <title>Agora Group Video Chat Demo</title>
+    <title>SLR Video Care</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
@@ -63,47 +63,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="modal fade" id="modalForm">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-            <h4 class="modal-title w-100 font-weight-bold">Join Channel</h4>
-            <button type="button" class="close" data-dismiss="modal">
-              <span>&times;</span>
-            </button>
-          </div>
-          <div class="modal-body mx-3">
-            <div class="md-form mb-4">
-              <input type="text" id="form-appid" class="form-control" />
-              <label for="form-appid">Agora AppId</label>
-            </div>
-            <div class="md-form mb-4">
-              <input type="text" id="form-token" class="form-control" />
-              <label for="form-token">Agora Token</label>
-            </div>
-            <div class="md-form mb-4">
-              <input type="text" id="form-channel" class="form-control" />
-              <label for="form-channel">Channel</label>
-            </div>
-            <div class="md-form mb-4">
-              <input
-                type="number"
-                id="form-uid"
-                class="form-control"
-                value="1001"
-                data-decimals="0"
-              />
-              <label for="form-uid">UID</label>
-            </div>
-          </div>
-          <div class="modal-footer d-flex justify-content-center">
-            <button id="join-channel" class="btn btn-default">
-              Join Channel
-            </button>
-          </div>
-        </div>
-      </div>
-    </div> -->
 
     <br /><br /><br /><br /><br />
 
@@ -145,15 +104,13 @@
     $("#modalForm").modal("hide");
     var printing = document.querySelector("#printD");
     var url_string = window.location;
-      var url = new URL(url_string);
-      var userid = url.searchParams.get("user-id");
-      var accountno = url.searchParams.get("account-no");
-      var name = url.searchParams.get("user-name");
-      var call_type = url.searchParams.get("call-type");
+    var url = new URL(url_string);
+    var userid = url.searchParams.get("user-id");
+    var accountno = url.searchParams.get("account-no");
+    var name = url.searchParams.get("user-name");
+    var call_type = url.searchParams.get("call-type");
 
-      
-
-    $("#exit-btn").on('click', function(){
+    $("#exit-btn").on("click", function () {
       let bat = `<div class="card text-center">
         <div class="card-body">
           <h3>Hello ${name} </h3>
@@ -161,24 +118,24 @@
         </div>
       </div>`;
       printing.innerHTML = bat;
-
     });
 
     function connect() {
-
-      joinCall(userid, accountno, name, call_type);
+      $.ajax({
+        url: "https://api.npoint.io/eb1556587a398f11df6c",
+        method: "GET",
+        success: function (data) {
+          console.log(data[0].token);
+          tk = data[0].token;
+          joinCall(userid, accountno, name, call_type, tk);
+        },
+      });
     }
 
-    // joinCall(userid, accountno, name, call_type);
-
-    function joinCall(userid, accountno, name, call_type) {
-      console.log(userid);
-      console.log(accountno);
-      console.log(name);
-      console.log(call_type);
+    function joinCall(userid, accountno, name, call_type, tk) {
       var agoraAppId = "d83497e32865451b9c719bfafb4dfb56";
-      var token =
-        "006d83497e32865451b9c719bfafb4dfb56IAASXwfkPjaeiAKOUYbwdp24Ir6ey4SC9UClHhWMLLg5Ic/7xnAAAAAAEADztpymvSVlYQEAAQC8JWVh";
+      var token = tk;
+      console.log(token);
       var channelName = "1132";
       var uid = "";
       if (name == "admin") {
