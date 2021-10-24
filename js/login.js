@@ -64,7 +64,7 @@ function sendlogin() {
   };
 
   $.ajax({
-    url: "https://b135-106-208-18-231.ngrok.io/video/login.php",
+    url: "https://lavankumar.000webhostapp.com/slr-video/login.php",
     method: "POST",
     data: dat,
     success: function (data) {

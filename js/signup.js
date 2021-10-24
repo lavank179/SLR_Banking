@@ -110,7 +110,7 @@ function sendRegister() {
 
 
   $.ajax({
-    url: "https://b135-106-208-18-231.ngrok.io/video/register.php",
+    url: "https://lavankumar.000webhostapp.com/slr-video/register.php",
     method: "POST",
     data: {
       signup: 13,

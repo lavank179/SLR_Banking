@@ -38,7 +38,7 @@ function req_form() {
   let ref_name = document.getElementById("refname").value;
 
   $.ajax({
-    url: "https://b135-106-208-18-231.ngrok.io/video/form_request.php",
+    url: "https://lavankumar.000webhostapp.com/slr-video/form_request.php",
     method: "POST",
     data: {
       insert_form_request: 10,
@@ -61,7 +61,7 @@ function req_form() {
 
 function getRequestForm() {
   $.ajax({
-    url: "https://b135-106-208-18-231.ngrok.io/video/form_request.php",
+    url: "https://lavankumar.000webhostapp.com/slr-video/form_request.php",
     method: "POST",
     data: {
       request_form_details: 10,
@@ -149,7 +149,7 @@ function change_user_details() {
   let refname = document.getElementById("refe_name").value;
 
   $.ajax({
-    url: "https://b135-106-208-18-231.ngrok.io/video/update_user_details.php",
+    url: "https://lavankumar.000webhostapp.com/slr-video/update_user_details.php",
     method: "POST",
     data: {
       insert_user_details: 10,
@@ -172,7 +172,7 @@ function change_user_details() {
 
 function get_user_details() {
   $.ajax({
-    url: "https://b135-106-208-18-231.ngrok.io/video/update_user_details.php",
+    url: "https://lavankumar.000webhostapp.com/slr-video/update_user_details.php",
     method: "POST",
     data: {
       get_user_details: 10,

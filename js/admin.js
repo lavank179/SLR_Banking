@@ -27,7 +27,7 @@ function req_form() {
   let ref_name = document.getElementById("refname").value;
 
   $.ajax({
-    url: "https://b135-106-208-18-231.ngrok.io/video/form_request.php",
+    url: "https://lavankumar.000webhostapp.com/slr-video/form_request.php",
     method: "POST",
     data: {
       insert_form_request: 10,
@@ -50,7 +50,7 @@ function req_form() {
 
 function getRequestForm() {
   $.ajax({
-    url: "https://b135-106-208-18-231.ngrok.io/video/form_request.php",
+    url: "https://lavankumar.000webhostapp.com/slr-video/form_request.php",
     method: "POST",
     data: {
       request_form_details: 10,
@@ -127,7 +127,7 @@ function changeStatus(statusb) {
   let st = $('#' + statusb).val();
 
   $.ajax({
-    url: "https://b135-106-208-18-231.ngrok.io/video/admin_approval.php",
+    url: "hhttps://lavankumar.000webhostapp.com/slr-video/admin_approval.php",
     method: "POST",
     data: {
       approval: 1,
@@ -182,7 +182,7 @@ function logout() {
 
 function getuserdetails() {
   $.ajax({
-    url: "https://b135-106-208-18-231.ngrok.io/video/update_user_details.php",
+    url: "https://lavankumar.000webhostapp.com/slr-video/update_user_details.php",
     method: "POST",
     data: {
       get_user_details: 10,
@@ -252,7 +252,7 @@ function printuserdetails(v1, v2, v3, v4, v5, v6) {
 function changeUserStatus(statusb) {
   let st = $('#' + statusb).val();
   $.ajax({
-    url: "https://b135-106-208-18-231.ngrok.io/video/update_user_details.php",
+    url: "https://lavankumar.000webhostapp.com/slr-video/update_user_details.php",
     method: "POST",
     data: {
       update_user_details: 1,
