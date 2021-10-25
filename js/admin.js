@@ -1,7 +1,17 @@
-var url_string = window.location;
-var url = new URL(url_string);
-var userid = url.searchParams.get("admin-id");
-var accountno = url.searchParams.get("account-no");
+// localStorage.getItem("admin-login-id");
+var userid = localStorage.getItem("admin-login-id");
+var accountno = localStorage.getItem("admin-account-no");
+
+if (userid == "" && accountno == "") {
+  document.body.innerHTML = "";
+  alert("Current Valid Session of Admin is not found! please login to continue.");
+  window.location.href = `../`;
+} else {
+
+// var url_string = window.location;
+// var url = new URL(url_string);
+// var userid = url.searchParams.get("admin-id");
+// var accountno = url.searchParams.get("account-no");
 
 
 $("#request-form-table").on("click", function () {
@@ -174,6 +184,8 @@ function connect_live_chat() {
 function logout() {
   let isExecuted = confirm("Are you sure want to logout?");
   if(isExecuted){
+    localStorage.setItem("admin-login-id", "");
+    localStorage.setItem("admin-account-no", "");
     window.location.href = "../";
   } else {
     console.log("Not logged out! Staying here.");
@@ -286,5 +298,7 @@ function changeUserStatus(statusb) {
       }
     },
   });
+
+}
 
 }
