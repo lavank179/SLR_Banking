@@ -137,7 +137,7 @@ function changeStatus(statusb) {
   let st = $('#' + statusb).val();
 
   $.ajax({
-    url: "hhttps://lavankumar.000webhostapp.com/slr-video/admin_approval.php",
+    url: "https://lavankumar.000webhostapp.com/slr-video/admin_approval.php",
     method: "POST",
     data: {
       approval: 1,

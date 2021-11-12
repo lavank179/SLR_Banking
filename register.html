@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-signin-client_id" content="771744083545-qno01nbctnkicj0t8f298rjermkmrl33.apps.googleusercontent.com">
     <title>SLR Bank - Register Page</title>
 
     <link
@@ -56,7 +57,17 @@
                         width="150px"
                         height="150px"
                       />
+                      <!-- <div class="form-outline mb-4"> -->
+                        <input
+                          type="text"
+                          id="acc_no"
+                          class="form-control inl-bl"
+                          name="acc"
+                          placeholder="Enter account number"
+                        />
+                      <!--</div>--><div class="g-signin2 inl-bl" data-onsuccess="onSignIn"></div>
                     </div>
+                    <br><br> <p class="text-center"> or </p> <br><br>
                     <form>
                       <div class="form-outline mb-4">
                         <input
@@ -180,6 +191,7 @@
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
     ></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <script type="text/javascript" src="./js/signup.js"></script>
     <script type="text/javascript" src="./js/responsive.js"></script>
